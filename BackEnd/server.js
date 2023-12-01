@@ -39,6 +39,14 @@ const bookSchema = new mongoose.Schema({
 
 const bookModel = mongoose.model('sdfsdfsdfsdfsdfffffffffffff423', bookSchema);
 
+app.delete('/api/book/:id', async(req,res)=>{
+  console.log("Delete: "+req.params.id);
+
+  let book = await bookModel.findByIdAndDelete(req.params.id);
+  res.send(book);
+
+})
+
 app.put('/api/book/:id', async(req, res)=>{
   console.log("Update: "+req.params.id);
 
